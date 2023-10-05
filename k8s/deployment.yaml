@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-henry
+  name: hello-henry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-henry
+  template:
+    metadata:
+      labels:
+        app: hello-henry
+    spec:
+      containers:
+        - image: quay.io/henrylangenhoven-dev/hello-henry:latest
+          imagePullPolicy: Always
+          name: hello-henry
+          ports:
+            - containerPort: 9000
+              protocol: TCP
